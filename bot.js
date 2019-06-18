@@ -1,6 +1,8 @@
 // LINE Developersに書いてあるChannel Access Token
-var CHANNEL_ACCESS_TOKEN = "SLAhIkWHD7LvapekzfWvBdYgGGaOQVnE6jGvIM55L3NU3h34uKirFW35vrFracMKKIqqb8KGT0dvfZ0Gq6Pa2eHbyDBQ6bc8MYVBmXBXS5BFJtnQXjRsdZLF5Ix8xTbBgU19bpUjdGadYsLELYvn1QdB04t89/1O/w1cDnyilFU="
-var to = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange(2,1).getValue();
+var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+var CHANNEL_ACCESS_TOKEN = sheet.getRange(2,1).getValue();
+var to = sheet.getRange(2,2).getValue();
 
 //送信するメッセージ定義する関数を作成します。
 function createMessage() {
@@ -40,6 +42,6 @@ function doPost(e){
   var GID = json.events[0].source.groupId;
   
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  sheet.getRange(2,1).setValue(GID);
+  sheet.getRange(2,2).setValue(GID);
   
 }
